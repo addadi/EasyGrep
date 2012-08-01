@@ -303,6 +303,10 @@ if !exists("g:EasyGrepHidden")
     let g:EasyGrepHidden=0
 endif
 
+if !exists("g:EasyGrepHighlightQfMatches")
+    let g:EasyGrepHighlightQfMatches=0
+endif
+
 if !exists("g:EasyGrepAllOptionsInExplorer")
     let g:EasyGrepAllOptionsInExplorer=0
 endif
@@ -385,12 +389,12 @@ if !exists("g:EasyGrepWindowPosition")
 else
     let w = g:EasyGrepWindowPosition
     if w != ""
-\   && w != "vertical" 
-\   && w != "leftabove" 
-\   && w != "aboveleft" 
-\   && w != "rightbelow" 
-\   && w != "belowright" 
-\   && w != "topleft" 
+\   && w != "vertical"
+\   && w != "leftabove"
+\   && w != "aboveleft"
+\   && w != "rightbelow"
+\   && w != "belowright"
+\   && w != "topleft"
 \   && w != "botright"
        call s:Error("Invalid position specified in g:EasyGrepWindowPosition")
        let g:EasyGrepWindowPosition=""
@@ -676,6 +680,7 @@ function! s:OpenOptionsExplorer()
     nnoremap <buffer> <silent> r    :call <sid>ToggleRecursion()<cr>
     nnoremap <buffer> <silent> i    :call <sid>ToggleIgnoreCase()<cr>
     nnoremap <buffer> <silent> h    :call <sid>ToggleHidden()<cr>
+    nnoremap <buffer> <silent> f    :call <sid>ToggleHighlightQfMatches()<cr>
     nnoremap <buffer> <silent> w    :call <sid>ToggleWindow()<cr>
     nnoremap <buffer> <silent> o    :call <sid>ToggleOpenWindow()<cr>
     nnoremap <buffer> <silent> g    :call <sid>ToggleEveryMatch()<cr>
@@ -982,6 +987,14 @@ function! <sid>ToggleHidden()
     call s:Echo("Set hidden files included to (".s:OnOrOff(g:EasyGrepHidden).")")
 endfunction
 " }}}
+" ToggleHighlightQfMatches {{{
+function! <sid>ToggleHighlightQfMatches()
+    let g:EasyGrepHighlightQfMatches = !g:EasyGrepHighlightQfMatches
+    call s:UpdateOptions()
+
+    call s:Echo("Set highlight matches in quickfix (".s:OnOrOff(g:EasyGrepHighlightQfMatches).")")
+endfunction
+" }}}
 " ToggleWindow {{{
 function! <sid>ToggleWindow()
     let g:EasyGrepWindow = !g:EasyGrepWindow
@@ -1238,6 +1251,7 @@ function! s:CreateOptions()
     call add(s:Options, "\"r: recursive mode (".s:OnOrOff(g:EasyGrepRecursive).")")
     call add(s:Options, "\"i: ignore case (".s:OnOrOff(g:EasyGrepIgnoreCase).")")
     call add(s:Options, "\"h: hidden files included (".s:OnOrOff(g:EasyGrepHidden).")")
+    call add(s:Options, "\"f: highlight matches in quickfix (".s:OnOrOff(g:EasyGrepHighlightQfMatches).")")
     call add(s:Options, "\"e: echo files that would be searched")
     if g:EasyGrepAllOptionsInExplorer
         call add(s:Options, "\"c: change grep command (".s:GetGrepCommandName().")")
@@ -1954,6 +1968,7 @@ function! s:DoGrep(word, add, whole, count, escapeArgs)
     endif
 
     let word = a:escapeArgs ? s:EscapeSpecial(a:word) : a:word
+    let escapedWord = word
     if whole
         if commandIsVimgrep
             let word = "\\<".word."\\>"
@@ -2052,6 +2067,11 @@ function! s:DoGrep(word, add, whole, count, escapeArgs)
                 execute g:EasyGrepWindowPosition." lopen"
             endif
             setlocal nofoldenable
+        endif
+        if g:EasyGrepHighlightQfMatches == 1
+          highlight EasyGrepQfMatchHighlight cterm=underline gui=underline ctermfg=4 guifg=4
+          execute 'match EasyGrepQfMatchHighlight /\c' . escapedWord . '/'
+          redraw
         endif
     else
         call s:WarnNoMatches(a:word)
@@ -2245,7 +2265,7 @@ function! s:DoReplace(target, replacement, whole, escapeArgs)
 
             let thisLine = getline(".")
             let off = match(thisLine,case.target, 0)
-            while off != -1 
+            while off != -1
 
                 " this highlights the match; it seems to be a simpler solution
                 " than matchadd()
