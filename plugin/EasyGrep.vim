@@ -21,6 +21,9 @@ if v:version < 700
     echo "Sorry, EasyGrep ".g:EasyGrepVersion."\nONLY runs with Vim 7.0 and greater."
     finish
 endif
+if !hlexists("EasyGrepQfMatchHighlight")
+    highlight EasyGrepQfMatchHighlight cterm=underline gui=underline ctermfg=4 guifg=4
+endif
 " }}}
 " }}}
 " Helper Functions {{{
@@ -2069,7 +2072,6 @@ function! s:DoGrep(word, add, whole, count, escapeArgs)
             setlocal nofoldenable
         endif
         if g:EasyGrepHighlightQfMatches == 1
-          highlight EasyGrepQfMatchHighlight cterm=underline gui=underline ctermfg=4 guifg=4
           execute 'match EasyGrepQfMatchHighlight /\c' . escapedWord . '/'
           redraw
         endif
