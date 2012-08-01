@@ -1,4 +1,4 @@
-This is fork of easy grep adding highlighting of search terms to the quickfix
+This is fork of EasyGrep adding highlighting of search terms to the quickfix
 window.
 
 Highlighing is controlled by a new option in the Options Window, and can be set
