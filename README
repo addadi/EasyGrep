@@ -1,12 +1,12 @@
 This is fork of EasyGrep adding highlighting of search terms to the quickfix
 window.
 
-Highlighing is controlled by a new option in the Options Window, and can be set
+Highlighting is controlled by a new option in the Options Window, and can be set
 as default by adding the following option to .vimrc,
 
     let g:EasyGrepHighlightQfMatches = 1
 
-Highlighting is controlled through the EasyGrepQfMatchHighlight highlight group.
+Colours are controlled through the EasyGrepQfMatchHighlight highlight group.
 
 
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=2438

@@ -350,7 +350,7 @@ the Windows meaning of those files with a hidden attribute.
 *EasyGrepHighlightQfMatches*
 Specifies that matched words in the QuickFix window should be distinguished
 from the rest of the line.
-Use the *EasyGrepQfMatchHighlight* |highlight| group to customize.
+Use the *EasyGrepQfMatchHighlight* |highlight| group to customize colours.
 
 *EasyGrepAllOptionsInExplorer*
 Specifies that all options be included in the explorer window.
