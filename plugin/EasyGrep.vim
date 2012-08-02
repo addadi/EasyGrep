@@ -22,7 +22,7 @@ if v:version < 700
     finish
 endif
 if !hlexists("EasyGrepQfMatchHighlight")
-    highlight EasyGrepQfMatchHighlight cterm=underline gui=underline ctermfg=4 guifg=4
+    highlight EasyGrepQfMatchHighlight cterm=standout gui=standout ctermfg=4 guifg=4
 endif
 " }}}
 " }}}
