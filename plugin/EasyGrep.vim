@@ -744,6 +744,7 @@ function! <sid>EchoOptionsSet()
             \ "g:EasyGrepRecursive",
             \ "g:EasyGrepIgnoreCase",
             \ "g:EasyGrepHidden",
+            \ "g:EasyGrepHighlightQfMatches",
             \ "g:EasyGrepSearchCurrentBufferDir",
             \ "g:EasyGrepAllOptionsInExplorer",
             \ "g:EasyGrepWindow",
@@ -1255,13 +1256,13 @@ function! s:CreateOptions()
     call add(s:Options, "\"r: recursive mode (".s:OnOrOff(g:EasyGrepRecursive).")")
     call add(s:Options, "\"i: ignore case (".s:OnOrOff(g:EasyGrepIgnoreCase).")")
     call add(s:Options, "\"h: hidden files included (".s:OnOrOff(g:EasyGrepHidden).")")
-    call add(s:Options, "\"f: highlight matches in quickfix (".s:OnOrOff(g:EasyGrepHighlightQfMatches).")")
     call add(s:Options, "\"e: echo files that would be searched")
     if g:EasyGrepAllOptionsInExplorer
         call add(s:Options, "\"c: change grep command (".s:GetGrepCommandName().")")
         call add(s:Options, "\"w: window to use (".s:GetErrorListName().")")
         call add(s:Options, "\"m: replace window mode (".s:GetReplaceWindowModeString(g:EasyGrepReplaceWindowMode).")")
         call add(s:Options, "\"o: open window on match (".s:OnOrOff(g:EasyGrepOpenWindowOnMatch).")")
+        call add(s:Options, "\"f: highlight matches in quickfix (".s:OnOrOff(g:EasyGrepHighlightQfMatches).")")
         call add(s:Options, "\"g: seperate multiple matches (".s:OnOrOff(g:EasyGrepEveryMatch).")")
         call add(s:Options, "\"p: jump to match (".s:OnOrOff(g:EasyGrepJumpToMatch).")")
         call add(s:Options, "\"!: invert the meaning of whole word (".s:OnOrOff(g:EasyGrepInvertWholeWord).")")
