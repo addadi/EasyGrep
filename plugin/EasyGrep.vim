@@ -1224,6 +1224,7 @@ function! s:CreateOptionMappings()
     exe "nmap <silent> ".p."r  :call <sid>ToggleRecursion()<cr>"
     exe "nmap <silent> ".p."i  :call <sid>ToggleIgnoreCase()<cr>"
     exe "nmap <silent> ".p."h  :call <sid>ToggleHidden()<cr>"
+    exe "nmap <silent> ".p."f  :call <sid>ToggleHighlightQfMatches()<cr>"
     exe "nmap <silent> ".p."w  :call <sid>ToggleWindow()<cr>"
     exe "nmap <silent> ".p."o  :call <sid>ToggleOpenWindow()<cr>"
     exe "nmap <silent> ".p."g  :call <sid>ToggleEveryMatch()<cr>"
