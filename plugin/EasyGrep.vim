@@ -2551,18 +2551,18 @@ endif
 
 if !exists("g:EasyGrepMappingsSet")
     nmap <silent> <unique> <script> <plug>EgMapGrepOptions          :call <sid>GrepOptions()<CR>
-    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_v    :noautocmd :call <sid>GrepCurrentWord("", 0)<CR>
-    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_v     y:noautocmd :call <sid>GrepSelection("", 0)<CR>
-    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_V    :noautocmd :call <sid>GrepCurrentWord("", 1)<CR>
-    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_V     y:noautocmd :call <sid>GrepSelection("", 1)<CR>
-    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_a    :noautocmd :call <sid>GrepCurrentWord("add", 0)<CR>
-    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_a     y:noautocmd :call <sid>GrepSelection("add", 0)<CR>
-    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_A    :noautocmd :call <sid>GrepCurrentWord("add", 1)<CR>
-    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_A     y:noautocmd :call <sid>GrepSelection("add", 1)<CR>
-    nmap <silent> <unique> <script> <plug>EgMapReplaceCurrentWord_r :noautocmd :call <sid>ReplaceCurrentWord(0)<CR>
-    vmap <silent> <unique> <script> <plug>EgMapReplaceSelection_r  y:noautocmd :call <sid>ReplaceSelection(0)<CR>
-    nmap <silent> <unique> <script> <plug>EgMapReplaceCurrentWord_R :noautocmd :call <sid>ReplaceCurrentWord(1)<CR>
-    vmap <silent> <unique> <script> <plug>EgMapReplaceSelection_R  y:noautocmd :call <sid>ReplaceSelection(1)<CR>
+    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_v    :noautocmd :call <sid>GrepCurrentWord("", 0)<CR> :e<CR>
+    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_v     y:noautocmd :call <sid>GrepSelection("", 0)<CR> :e<CR>
+    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_V    :noautocmd :call <sid>GrepCurrentWord("", 1)<CR> :e<CR>
+    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_V     y:noautocmd :call <sid>GrepSelection("", 1)<CR> :e<CR>
+    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_a    :noautocmd :call <sid>GrepCurrentWord("add", 0)<CR> :e<CR>
+    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_a     y:noautocmd :call <sid>GrepSelection("add", 0)<CR> :e<CR>
+    nmap <silent> <unique> <script> <plug>EgMapGrepCurrentWord_A    :noautocmd :call <sid>GrepCurrentWord("add", 1)<CR> :e<CR>
+    vmap <silent> <unique> <script> <plug>EgMapGrepSelection_A     y:noautocmd :call <sid>GrepSelection("add", 1)<CR> :e<CR>
+    nmap <silent> <unique> <script> <plug>EgMapReplaceCurrentWord_r :noautocmd :call <sid>ReplaceCurrentWord(0)<CR> :e<CR>
+    vmap <silent> <unique> <script> <plug>EgMapReplaceSelection_r  y:noautocmd :call <sid>ReplaceSelection(0)<CR> :e<CR>
+    nmap <silent> <unique> <script> <plug>EgMapReplaceCurrentWord_R :noautocmd :call <sid>ReplaceCurrentWord(1)<CR> :e<CR>
+    vmap <silent> <unique> <script> <plug>EgMapReplaceSelection_R  y:noautocmd :call <sid>ReplaceSelection(1)<CR> :e<CR>
 
     let g:EasyGrepMappingsSet = 1
 endif
